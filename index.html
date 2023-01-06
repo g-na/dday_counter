@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>D-Day Counter</title>
+
+    <script>
+        const dateFormMaker = function() {
+            console.log(document.querySelector('#date-input-year').value); /* 입력받은 값을 가져온다. */
+        };
+    </script>
+</head>
+<body>
+    <h1>D-Day Counter</h1>
+    <div></div>
+    <input id="date-input-year" class="date-input" type="date"/>
+    <button onclick="dateFormMaker()">확인</button>
+</body>
+</html>
