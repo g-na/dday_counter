@@ -35,15 +35,18 @@ const counterMaker = function () {
     seconds: Math.floor(temp) % 60,
   };
 
-  const rdays = document.getElementById("days");
-  const rhours = document.getElementById("hours");
-  const rmin = document.getElementById("minutes");
-  const rsec = document.getElementById("seconds");
+  const documentObj = {
+    rdays: document.getElementById("days"),
+    rhours: document.getElementById("hours"),
+    rmin: document.getElementById("minutes"),
+    rsec: document.getElementById("seconds"),
+  };
 
-  rdays.textContent = days;
-  rhours.textContent = hours;
-  rmin.textContent = minutes;
-  rsec.textContent = seconds;
+  const resKeys = Object.keys(resultObj);
+  const docKeys = Object.keys(documentObj);
+  for (let i = 0; i < resKeys.length; i++) {
+    documentObj[docKeys[i]].textContent = resultObj[resKeys[i]];
+  }
 
   console.log(days, hours, minutes, seconds);
 };
