@@ -1,7 +1,8 @@
 const msgBox = document.querySelector("#inform-msg");
 const container = document.querySelector("#d-day-counter");
 container.style.display = "none";
-msgBox.textContent = "d-day를 입력해주세요.";
+//msgBox.textContent = "d-day를 입력해주세요.";
+msgBox.innerHTML = "<h3>D-day를 입력해주세요.";
 
 const dateFormMaker = function () {
   const year = document.querySelector("#date-input-year").value;
