@@ -43,9 +43,15 @@ const counterMaker = function () {
   };
 
   const resKeys = Object.keys(resultObj);
-  const docKeys = Object.keys(documentObj);
-  for (let i = 0; i < resKeys.length; i++) {
-    documentObj[docKeys[i]].textContent = resultObj[resKeys[i]];
+  //const docKeys = Object.keys(documentObj);
+
+  //   for (let i = 0; i < resKeys.length; i++) {
+  //     documentObj[docKeys[i]].textContent = resultObj[resKeys[i]];
+  //   }
+  let index = 0;
+  for (let key in documentObj) {
+    documentObj[key].textContent = resultObj[resKeys[index]];
+    index++;
   }
 
   console.log(days, hours, minutes, seconds);
