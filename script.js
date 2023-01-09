@@ -70,5 +70,7 @@ const counterMaker = function () {
 const starter = function () {
   container.style.display = "flex";
   msgBox.style.display = "none";
-  counterMaker();
+
+  counterMaker(); // setInterval 최초 실행시 1초 간격 사이 0시간 0분 0초 나오는 현상 해결
+  setInterval(counterMaker, 1000); // setInterval(x,y): x함수를 y초마다 계속해서 반복
 };
