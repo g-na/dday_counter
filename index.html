@@ -16,13 +16,14 @@
 
         const counterMaker = function(){
             const inputDate = dateFormMaker();
-            const targetDate = new Date(inputDate);
+            const targetDate = new Date(inputDate); //setHours(0,0,0,0) 자정을 기준으로 시각 설정
             const nowDate = new Date();
             const temp = (targetDate - nowDate)/1000; // return된 초 단위 결과값
 
-            const year = Math.floor(temp/3600/24);
-            const month = Math.floor(temp/3600) % 24;
-            const seconds = Math.floor(temp)%60;
+            const date = Math.floor(temp/3600/24); //Math.floor 소수점 이하 버림
+            const hours = Math.floor(temp/3600) % 24;
+            const minutes = Math.floor(temp/60) % 60;
+            const seconds = Math.floor(temp) % 60;
 
             console.log();
         }
