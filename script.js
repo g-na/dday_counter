@@ -28,10 +28,12 @@ const counterMaker = function () {
     return (msgBox.innerHTML = "<h3>유효한 시간대가 아닙니다.</h3>");
   }
 
-  const days = Math.floor(temp / 3600 / 24); //Math.floor 소수점 이하 버림
-  const hours = Math.floor(temp / 3600) % 24;
-  const minutes = Math.floor(temp / 60) % 60;
-  const seconds = Math.floor(temp) % 60;
+  const resultObj = {
+    days: Math.floor(temp / 3600 / 24), //Math.floor 소수점 이하 버림
+    hours: Math.floor(temp / 3600) % 24,
+    minutes: Math.floor(temp / 60) % 60,
+    seconds: Math.floor(temp) % 60,
+  };
 
   const rdays = document.getElementById("days");
   const rhours = document.getElementById("hours");
