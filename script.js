@@ -1,6 +1,6 @@
 const msgBox = document.querySelector("#inform-msg");
 const container = document.querySelector("#d-day-counter");
-//container.style.display = "none";
+container.style.display = "none";
 //msgBox.textContent = "d-day를 입력해주세요.";
 msgBox.innerHTML = "<h3>D-day를 입력해주세요.";
 
@@ -21,10 +21,14 @@ const counterMaker = function () {
   const temp = (targetDate - nowDate) / 1000; // return된 초 단위 결과값
 
   if (temp <= 0) {
+    msgBox.style.display = "flex";
+    container.style.display = "none";
     return (msgBox.innerHTML = "<h3>타이머가 종료되었습니다.</h3>");
   } else if (isNaN(temp)) {
     // Date() 생성자 함수는 날짜 값만 반환. 날짜가 아닌 경우 NaN반환
     //NaN값 확인을 위해서는 isNaN() 함수 사용, 비교 연산자 이용 불가
+    msgBox.style.display = "flex";
+    container.style.display = "none";
     return (msgBox.innerHTML = "<h3>유효한 시간대가 아닙니다.</h3>");
   }
 
@@ -61,4 +65,10 @@ const counterMaker = function () {
     document.getElementById(tag).textContent = resultObj[resKeys[i]];
     i++;
   }
+};
+
+const starter = function () {
+  container.style.display = "flex";
+  msgBox.style.display = "none";
+  counterMaker();
 };
