@@ -1,9 +1,7 @@
 const msgBox = document.querySelector("#inform-msg");
 const container = document.querySelector("#d-day-counter");
-container.style.display = "none";
-//msgBox.textContent = "d-day를 입력해주세요.";
-msgBox.innerHTML = "<h3>D-day를 입력해주세요.";
 const intervalIdArr = [];
+const savedDate = localStorage.getItem("saved-date");
 
 const dateFormMaker = function () {
   const year = document.querySelector("#date-input-year").value;
@@ -78,11 +76,18 @@ const counterMaker = function (inputDate) {
   }
 };
 
-const starter = function () {
-  const inputDate = dateFormMaker();
+const starter = function (inputDate) {
+  setClearInterval();
+
+  if (!inputDate) {
+    inputDate = dateFormMaker();
+    localStorage.setItem("saved-date", inputDate);
+    // 개발자도구에서 application -> storage에서 확인 가능
+  }
+
   container.style.display = "flex";
   msgBox.style.display = "none";
-  setClearInterval();
+
   counterMaker(inputDate); // setInterval 최초 실행시 1초 간격 사이 0시간 0분 0초 나오는 현상 해결
   // setInterval(x,y): x함수를 y초마다 계속해서 반복
   // 실행할 때마다 interval에 고유 id값이 반영됨
@@ -101,8 +106,20 @@ const setClearInterval = function () {
 };
 
 const resetTimer = function () {
+  localStorage.removeItem("saved-date");
+
   container.style.display = "none";
   msgBox.innerHTML = "<h3>D-Day를 입력해주세요.</h3>";
   msgBox.style.display = "flex";
   setClearInterval();
 };
+
+if (savedDate) {
+  starter(savedDate);
+  console.log("valid");
+} else {
+  container.style.display = "none";
+  //msgBox.textContent = "d-day를 입력해주세요.";
+  msgBox.innerHTML = "<h3>D-day를 입력해주세요.";
+  console.log("null");
+}
